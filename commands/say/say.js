@@ -18,7 +18,7 @@ module.exports = {
         const phrase = interaction.options.getString('phrase');
         if (!interaction.member.voice?.channel) return interaction.editReply('Connect to a Voice Channel');
 
-        const key = "0c104b7f02b846288ef75f1a7ebcc393";
+        const key = process.env.AISPEECH_TOKEN;
         const region = "eastus";
         const audioFile = "elaudio.wav"
 
