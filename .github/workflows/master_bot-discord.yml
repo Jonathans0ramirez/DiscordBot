@@ -26,7 +26,7 @@ jobs:
         username: ${{ secrets.AzureAppService_ContainerUsername_6963ad815b3f495fa1cbf61810dac71d }}
         password: ${{ secrets.AzureAppService_ContainerPassword_0a000f4804134b4a881e79cc314dbe0d }}
 
-    - name: Build and push container image to registry
+    - name: Build and push container image to registry presi11
       uses: docker/build-push-action@v2
       with:
         context: .
@@ -48,5 +48,10 @@ jobs:
       with:
         app-name: 'bot-discord'
         slot-name: 'production'
+<<<<<<< HEAD
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_783e9fab9f064816a3f578d11b00f52b }}
         images: 'presi11/discord-bot:${{ github.sha }}'
+=======
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e825247fe477487e8438753b63054598 }}
+        images: 'presi11/discord-bot:${{ github.sha }}'
+>>>>>>> 407685677d10ad5dd369477010b5fd028c0adc96

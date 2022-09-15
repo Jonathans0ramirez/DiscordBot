@@ -3,7 +3,7 @@ const ms = require("ms")
 
 module.exports = {
     async execute(interaction, client) {
-        const guildDB = await interaction.guild.fetchDB()
+        const guildDB = await interaction.guild.fetchDB(client.guildData)
         if (interaction.isButton()) {
             console.log("BUTTON USED")
             const queue = await client.player.getQueue(interaction.guild.id)
@@ -380,7 +380,7 @@ module.exports = {
                 await command.execute(interaction, guildDB);
             } catch (error) {
                 console.error(error);
-                await interaction.reply({
+                await interaction.editReply({
                     content: 'There was an error while executing this command!',
                     ephemeral: true
                 });
@@ -417,7 +417,7 @@ module.exports = {
                 // { content: encodeURI(addToCalendar.replaceAll(" ", "+")), fetchReply: true });
                 await message.react('👽');
                 await message.react('🙅🏻');
-                await interaction.guild.addEventDB(message.id, eventName, encodeURI(addToCalendar.replaceAll(" ", "+")));
+                await interaction.guild.addEventDB(client.eventData, message.id, eventName, encodeURI(addToCalendar.replaceAll(" ", "+")));
             }
         }
 
